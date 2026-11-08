@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>東浪工作室</title>
+<meta name="description" content="東浪工作室 East Wave Studio｜台東浪子的男士運動按摩、指壓、油壓。台東・高雄工作室，不定期外出台南、台中、台北。LINE @eastwave 預約。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap">
+<style>
+/* Layout: a tide line. Deep-sea hero, then foam-white sections stacked like a single scroll down the coast; the booking calculator is the destination. */
+:root{
+  --bg:#f2f5f5; --surface:#ffffff; --fg:#13232e; --muted:#566872; --line:#d7e0e3;
+  --sea:#1b5876; --sea-soft:#e3eef2; --sand:#a98457; --sand-soft:#f3ece2;
+  --hero-bg:#0d2536; --hero-fg:#eef5f7; --hero-muted:#a9c1cc;
+  --ok:#1f7a55;
+  --f-display:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  --f-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --r:14px; --maxw:1040px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0a1720; --surface:#10222e; --fg:#e4edf0; --muted:#93a8b2; --line:#203845;
+  --sea:#72b8d8; --sea-soft:#14303f; --sand:#d6b689; --sand-soft:#2a2419;
+  --hero-bg:#06121b; --hero-fg:#eef5f7; --hero-muted:#9bb4c0; --ok:#5cc597; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0a1720; --surface:#10222e; --fg:#e4edf0; --muted:#93a8b2; --line:#203845;
+  --sea:#72b8d8; --sea-soft:#14303f; --sand:#d6b689; --sand-soft:#2a2419;
+  --hero-bg:#06121b; --hero-fg:#eef5f7; --hero-muted:#9bb4c0; --ok:#5cc597; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0}
+img{max-width:100%}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--hero-bg)}
+a{color:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.3}
+h2{font-size:clamp(1.6rem,4.6vw,2.3rem);font-weight:900}
+p{margin:0}
+.eyebrow{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sand);font-weight:700}
+:focus-visible{outline:3px solid var(--sand);outline-offset:2px;border-radius:6px}
+
+/* header */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--hero-bg);color:var(--hero-fg);border-bottom:1px solid rgba(255,255,255,.08)}
+header.top .wrap{display:flex;align-items:center;gap:12px;padding-block:10px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0}
+.brand img{width:36px;height:36px}
+.brand b{font-family:var(--f-display);font-size:1.1rem;letter-spacing:.06em;white-space:nowrap}
+nav.links{display:flex;gap:18px;margin-left:auto;font-size:.92rem}
+nav.links a{text-decoration:none;color:var(--hero-muted)}
+nav.links a:hover{color:var(--hero-fg)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:11px 20px;font:inherit;font-weight:700;text-decoration:none;cursor:pointer;transition:transform .15s, background .15s}
+.btn:active{transform:scale(.97)}
+.btn-line{background:#06c755;color:#fff}
+.btn-line:hover{background:#05b04b}
+.btn-ghost{background:transparent;color:var(--hero-fg);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.35)}
+.btn-sm{padding:8px 14px;font-size:.88rem}
+header .btn{margin-left:auto}
+@media (min-width:760px){header .btn{margin-left:0}}
+@media (max-width:759px){nav.links{display:none}}
+
+/* hero */
+.hero{background:var(--hero-bg);color:var(--hero-fg);position:relative;overflow:hidden}
+.hero .wrap{display:grid;gap:28px;padding-block:44px 84px;grid-template-columns:1fr}
+@media (min-width:860px){.hero .wrap{grid-template-columns:1.1fr .9fr;align-items:center;padding-block:72px 110px}}
+.hero h1{font-size:clamp(2.6rem,10vw,4.4rem);font-weight:900;letter-spacing:.04em}
+.hero .en{font-size:.85rem;letter-spacing:.32em;color:var(--hero-muted);text-transform:uppercase;margin-top:6px}
+.hero .tags{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:22px;font-family:var(--f-display);font-size:1.15rem;color:var(--hero-fg)}
+.hero .tags span+span::before{content:"｜";color:var(--hero-muted);margin-right:14px}
+.hero .lede{color:var(--hero-muted);margin-top:16px;max-width:30em}
+.hero .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.hero .photo{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;max-width:100%;max-height:520px;justify-self:center;width:100%}
+@media (min-width:860px){.hero .photo{max-width:420px}}
+.hero .photo img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.9) contrast(1.05)}
+.hero .photo figcaption{position:absolute;left:12px;bottom:12px;background:rgba(6,18,27,.72);backdrop-filter:blur(6px);color:var(--hero-fg);padding:6px 12px;border-radius:999px;font-size:.82rem}
+.tide{position:absolute;left:0;right:0;bottom:-1px;height:56px;width:100%;display:block}
+.tide path{fill:var(--bg)}
+.tide .crest{fill:none;stroke:var(--sand);stroke-width:1.5;opacity:.7}
+@keyframes drift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.tide g{animation:drift 22s linear infinite}
+
+section{padding-block:64px}
+section .head{display:grid;gap:8px;margin-bottom:28px}
+section .head p.sub{color:var(--muted);max-width:36em}
+
+/* about */
+.about{display:grid;gap:28px;grid-template-columns:1fr}
+@media (min-width:820px){.about{grid-template-columns:280px 1fr;gap:48px;align-items:start}}
+.portrait{background:linear-gradient(180deg,var(--sea-soft),var(--sand-soft));border-radius:var(--r);overflow:hidden;aspect-ratio:3/4;max-width:280px;width:100%;display:flex;align-items:flex-end;justify-content:center}
+.portrait img{width:100%;display:block}
+.story{display:grid;gap:16px;max-width:36em;min-width:0}
+.story p{font-size:1.02rem}
+.story .sign{font-family:var(--f-display);color:var(--sand);font-size:1.1rem}
+.story strong{color:var(--sea);font-weight:700}
+
+/* services */
+.menu{display:grid;gap:18px;grid-template-columns:1fr}
+@media (min-width:860px){.menu{grid-template-columns:1.2fr 1fr}}
+.course{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:24px;display:grid;gap:16px}
+.course .row{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px}
+.course h3{font-size:1.45rem}
+.badge{display:inline-block;font-size:.78rem;font-weight:700;color:var(--sand);background:var(--sand-soft);padding:3px 10px;border-radius:999px}
+.price{font-variant-numeric:tabular-nums;font-weight:700;font-size:1.7rem;color:var(--sea);white-space:nowrap}
+.price small{font-size:.9rem;color:var(--muted);font-weight:500;margin-left:6px}
+.tech{display:grid;gap:12px;padding:0;margin:0;list-style:none}
+.tech li{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start}
+.tech .k{font-family:var(--f-display);font-weight:600;color:var(--sea);border:1.5px solid var(--sea);border-radius:8px;width:2.2em;height:2.2em;display:grid;place-items:center;font-size:.95rem}
+.tech b{display:block}
+.tech span{color:var(--muted);font-size:.93rem}
+.fees{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.fees h3{font-size:1.2rem;margin-bottom:8px}
+.fees dl{margin:0;display:grid}
+.fees .f{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding-block:12px;border-bottom:1px dashed var(--line)}
+.fees .f:last-child{border-bottom:0}
+.fees dt{font-weight:500}
+.fees dd{margin:0;text-align:right;font-variant-numeric:tabular-nums;font-weight:700;color:var(--sea)}
+.fees .note{grid-column:1/-1;color:var(--muted);font-size:.86rem}
+.notice{margin-top:18px;background:var(--sea-soft);border-radius:var(--r);padding:16px 20px;display:grid;gap:6px;font-size:.93rem}
+.notice b{color:var(--sea)}
+
+/* places */
+.cities{display:grid;gap:18px;grid-template-columns:1fr}
+@media (min-width:760px){.cities{grid-template-columns:repeat(2,1fr)}}
+.city{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px 24px}
+.city h3{font-size:1.25rem;display:flex;align-items:baseline;gap:10px}
+.city h3 small{font-family:var(--f-body);font-size:.8rem;letter-spacing:.14em;color:var(--muted);font-weight:500}
+.city ul{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:10px}
+.city li{display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:baseline}
+.city li b{font-weight:700}
+.city li span{color:var(--muted);font-size:.9rem;text-align:right}
+.city.trip{background:var(--sand-soft);border-color:transparent}
+.city.trip p{margin-top:12px;color:var(--fg)}
+.places-note{margin-top:16px;color:var(--muted);font-size:.9rem}
+
+/* booking calculator */
+.book{background:var(--surface);border-block:1px solid var(--line)}
+.calc{display:grid;gap:24px;grid-template-columns:1fr}
+@media (min-width:900px){.calc{grid-template-columns:1.15fr .85fr;align-items:start}}
+form.steps{display:grid;gap:22px}
+fieldset{border:0;margin:0;padding:0;display:grid;gap:10px;min-width:0}
+legend{font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:10px;padding:0}
+legend .n{width:1.7em;height:1.7em;border-radius:50%;background:var(--sea);color:var(--bg);display:grid;place-items:center;font-size:.85rem;font-variant-numeric:tabular-nums}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{position:relative}
+.chips input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.chips span{display:inline-flex;flex-direction:column;align-items:flex-start;padding:9px 15px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);cursor:pointer;line-height:1.35;transition:border-color .15s,background .15s}
+.chips span em{font-style:normal;font-size:.78rem;color:var(--muted)}
+.chips input:checked+span{border-color:var(--sea);background:var(--sea-soft);color:var(--fg)}
+.chips input:focus-visible+span{outline:3px solid var(--sand);outline-offset:2px}
+.field{display:grid;gap:6px}
+.field label{font-size:.88rem;color:var(--muted)}
+.grid2{display:grid;gap:12px;grid-template-columns:1fr 1fr}
+@media (max-width:420px){.grid2{grid-template-columns:1fr}}
+input[type=text],input[type=tel],input[type=date],input[type=time],input[type=number],textarea{width:100%;font:inherit;color:var(--fg);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;min-width:0}
+input:focus,textarea:focus{outline:none;border-color:var(--sea)}
+textarea{min-height:72px;resize:vertical}
+.hint{font-size:.84rem;color:var(--muted)}
+.summary{background:var(--hero-bg);color:var(--hero-fg);border-radius:var(--r);padding:22px;display:grid;gap:14px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px)}
+.summary h3{font-size:1.1rem}
+.lines{display:grid;gap:6px;font-variant-numeric:tabular-nums;font-size:.94rem}
+.lines div{display:flex;justify-content:space-between;gap:12px;color:var(--hero-muted)}
+.lines div b{color:var(--hero-fg);font-weight:500}
+.total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid rgba(255,255,255,.15);padding-top:12px}
+.total strong{font-size:2rem;font-variant-numeric:tabular-nums}
+pre.msg{margin:0;white-space:pre-wrap;word-break:break-word;background:rgba(255,255,255,.06);border-radius:10px;padding:12px;font-family:var(--f-body);font-size:.88rem;line-height:1.6;color:var(--hero-fg);max-height:260px;overflow:auto}
+.summary .acts{display:grid;gap:8px}
+.summary .acts .btn{width:100%}
+.copied{font-size:.85rem;color:#8fe0b4;min-height:1.2em}
+.qr{display:flex;gap:14px;align-items:center;border-top:1px solid rgba(255,255,255,.15);padding-top:14px}
+.qr img{width:92px;height:92px;border-radius:8px;background:#fff;padding:4px}
+.qr p{font-size:.86rem;color:var(--hero-muted)}
+.qr p b{color:var(--hero-fg);font-size:1rem;user-select:all}
+
+.slots span{min-width:4.6em;align-items:center}
+.chips input:disabled+span{opacity:.38;text-decoration:line-through;cursor:not-allowed}
+.sent{font-size:.92rem;line-height:1.6}
+.sent.ok{color:#8fe0b4}.sent.err{color:#ffb4a8}
+.btn[disabled]{opacity:.6;cursor:wait}
+footer{padding-block:36px;color:var(--muted);font-size:.86rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center;justify-content:space-between}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="img/logo.png" alt=""><b>東浪工作室</b></a>
+    <nav class="links" aria-label="主選單">
+      <a href="#about">台東浪子</a><a href="#services">服務價目</a><a href="#places">地點</a>
+    </nav>
+    <a class="btn btn-line btn-sm" href="#book">立即預約</a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Men's Exclusive Spa · 台東</p>
+        <h1>東浪工作室</h1>
+        <p class="en">East Wave Studio</p>
+        <div class="tags"><span>運動按摩</span><span>指壓</span><span>油壓</span></div>
+        <p class="lede">台東浪子的男士專屬放鬆空間。台東工作室常駐，定期到高雄，不定期外出台南、台中、台北。一次 100 分鐘，把緊繃的肩頸背腿慢慢放開。</p>
+        <div class="cta">
+          <a class="btn btn-line" href="#book">線上預約</a>
+          <a class="btn btn-ghost" href="#services">看服務價目</a>
+        </div>
+      </div>
+      <figure class="photo" style="margin:0">
+        <img src="img/room.jpg" alt="東浪工作室按摩室：木紋牆面與按摩床">
+        <figcaption>台東・東浪工作室</figcaption>
+      </figure>
+    </div>
+    <svg class="tide" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true">
+      <g>
+        <path d="M0 28 C120 10 240 10 360 28 S600 46 720 28 960 10 1080 28 1320 46 1440 28 1680 10 1800 28 2040 46 2160 28 2400 10 2520 28 2760 46 2880 28 V56 H0Z"/>
+        <path class="crest" d="M0 28 C120 10 240 10 360 28 S600 46 720 28 960 10 1080 28 1320 46 1440 28 1680 10 1800 28 2040 46 2160 28 2400 10 2520 28 2760 46 2880 28"/>
+      </g>
+    </svg>
+  </div>
+
+  <section id="about">
+    <div class="wrap about">
+      <div class="portrait"><img src="img/jason.png" alt="台東浪子本人照片" loading="lazy"></div>
+      <div class="story">
+        <p class="eyebrow">About</p>
+        <h2>東浪工作室・台東浪子</h2>
+        <p>我曾在台北求學、工作十年，後來輾轉漂泊到台中，最後選擇把人生安定在台東。這裡的好山好水，給了我歸屬感，也讓「台東浪子」這個綽號，成為我真實的寫照。</p>
+        <p>浪子，代表我浪蕩奔放的個性；同時，我也希望帶著一份與人和善、真誠交流的理念。看到許多來到台東的旅人，都在尋找一個能真正放鬆的時刻，我決定用自己的方式，提供這份體驗。</p>
+        <p>在東浪工作室，結合了<strong>運動按摩</strong>與<strong>舒壓放鬆</strong>的手法，專注於調整身心、釋放壓力。每一次的服務，不只是按摩，而是一段重新與自己對話、好好感受台東慢步調的旅程。</p>
+        <p>我希望，每一位走進來的客人，都能帶著放鬆的身體與愉快的心情離開。</p>
+        <p class="sign">— 台東浪子</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" style="padding-top:8px">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Services</p>
+        <h2>服務與價目</h2>
+        <p class="sub">第一次來、或身體緊繃想好好放鬆，都從招牌課程開始。手法會依你當天的狀況調整。</p>
+      </div>
+      <div class="menu">
+        <article class="course">
+          <div class="row">
+            <h3>招牌放鬆課程</h3>
+            <span class="badge">首次體驗推薦</span>
+          </div>
+          <div class="price">$2,300<small>100 分鐘</small></div>
+          <ul class="tech">
+            <li><span class="k">運</span><div><b>運動按摩</b><span>針對肩頸、背部、腿部的緊繃肌肉，用運動按摩手法放鬆。</span></div></li>
+            <li><span class="k">指</span><div><b>指壓</b><span>找出痠痛點加壓，適合久坐、久站、運動後的疲勞。</span></div></li>
+            <li><span class="k">油</span><div><b>油壓舒緩</b><span>全身油壓收尾，讓身體慢慢放鬆下來。</span></div></li>
+          </ul>
+        </article>
+        <aside class="fees">
+          <h3>加價與其他費用</h3>
+          <dl>
+            <div class="f"><dt>延長 30 分鐘</dt><dd>+$600</dd></div>
+            <div class="f"><dt>夜間 23:00 後</dt><dd>+$200</dd></div>
+            <div class="f"><dt>夜間 01:00 後</dt><dd>+$400</dd></div>
+            <div class="f"><dt>外出服務 5 公里內</dt><dd>+$200</dd><span class="note">台東從東浪出發，高雄從光武出發</span></div>
+            <div class="f"><dt>超過 5 公里</dt><dd>每公里 +$50</dd></div>
+            <div class="f"><dt>旅館房費</dt><dd>客人自付</dd></div>
+          </dl>
+        </aside>
+      </div>
+      <div class="notice">
+        <b>預約須知</b>
+        <p>為了雙方健康，請保持身體清潔，來之前可以先沖個澡。衛生習慣不佳時，服務內容會調整。</p>
+        <p>工作室詳細地址會在預約確認後，由浪子用 LINE 告訴你。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="places" style="padding-top:8px">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Locations</p>
+        <h2>工作室地點</h2>
+        <p class="sub">台東常駐，高雄有固定場地。其他城市的行程會公告在 LINE 行事曆。</p>
+      </div>
+      <div class="cities">
+        <div class="city">
+          <h3>台東 <small>TAITUNG</small></h3>
+          <ul>
+            <li><b>東浪</b><span>北平街 104 巷</span></li>
+          </ul>
+        </div>
+        <div class="city">
+          <h3>高雄 <small>KAOHSIUNG</small></h3>
+          <ul>
+            <li><b>光武</b><span>光武家園旁</span></li>
+            <li><b>正興</b><span>正興國中旁</span></li>
+            <li><b>巨蛋</b><span>文忠路 106 號</span></li>
+          </ul>
+        </div>
+        <div class="city trip" style="grid-column:1/-1">
+          <h3>不定期外出 <small>ON TOUR</small></h3>
+          <p>高雄・台南・台中・台北，日期請看 LINE 官方帳號的行事曆。透過 LINE 官方帳號預約有優惠。</p>
+        </div>
+      </div>
+      <p class="places-note">來之前記得先跟浪子確認詳細地址。</p>
+    </div>
+  </section>
+
+  <section id="book" class="book">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Booking</p>
+        <h2>線上預約</h2>
+        <p class="sub">選好地點、時長和時間，頁面會算出費用。按「送出預約」後，浪子會在 LINE 或電話跟你確認，確認後才算預約成功。</p>
+      </div>
+      <div class="calc">
+        <form class="steps" id="f" autocomplete="on">
+          <fieldset>
+            <legend><span class="n">1</span>城市</legend>
+            <div class="chips" id="city"></div>
+          </fieldset>
+          <fieldset>
+            <legend><span class="n">2</span>地點</legend>
+            <div class="chips" id="venue"></div>
+            <div class="field" id="kmBox" hidden>
+              <label for="km">離出發點大約幾公里？</label>
+              <input type="number" id="km" min="0" step="1" value="3" inputmode="numeric">
+              <span class="hint" id="kmHint">5 公里內 +$200，超過每公里 +$50。實際距離由浪子確認。</span>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend><span class="n">3</span>時長</legend>
+            <div class="chips" id="dur"></div>
+          </fieldset>
+          <fieldset>
+            <legend><span class="n">4</span>日期與時間</legend>
+            <div class="field"><label for="date">日期</label><input type="date" id="date"></div>
+            <div class="field" id="slotBox" hidden>
+              <label>可預約的開始時間</label>
+              <div class="chips slots" id="slots"></div>
+              <span class="hint" id="slotMsg"></span>
+            </div>
+            <div class="field" id="timeBox"><label for="time">開始時間</label><input type="time" id="time" value="20:00" step="1800"></div>
+            <span class="hint">23:00 後開始 +$200，01:00 到 06:00 開始 +$400。</span>
+          </fieldset>
+          <fieldset>
+            <legend><span class="n">5</span>聯絡方式</legend>
+            <div class="grid2">
+              <div class="field"><label for="name">貴姓</label><input type="text" id="name" placeholder="例：王先生" autocomplete="family-name"></div>
+              <div class="field"><label for="phone">手機</label><input type="tel" id="phone" placeholder="09xx-xxx-xxx" autocomplete="tel"></div>
+            </div>
+            <div class="field"><label for="note">想加強的部位或備註（選填）</label><textarea id="note" placeholder="例：肩頸很緊、最近剛跑完馬拉松"></textarea></div>
+          </fieldset>
+        </form>
+
+        <aside class="summary" aria-live="polite">
+          <h3>你的預約</h3>
+          <div class="lines" id="lines"></div>
+          <div class="total"><span>預估費用</span><strong id="total">$2,300</strong></div>
+          <pre class="msg" id="msg"></pre>
+          <div class="acts">
+            <button class="btn btn-line" type="button" id="send" hidden>送出預約</button>
+            <span class="sent" id="sent" role="status"></span>
+            <button class="btn btn-line" type="button" id="copy">複製預約訊息，到 LINE 貼上</button>
+            <a class="btn btn-ghost" id="openLine" href="https://line.me/R/ti/p/@eastwave" target="_blank" rel="noopener">開啟 LINE @eastwave</a>
+            <span class="copied" id="copied"></span>
+          </div>
+          <div class="qr">
+            <img src="img/line-qr.png" alt="東浪工作室 LINE 官方帳號 QR Code">
+            <p>也可以掃 QR Code 或搜尋 ID<br><b>@eastwave</b></p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 東浪工作室 East Wave Studio・台東</span>
+    <span>LINE 官方帳號 <b style="user-select:all">@eastwave</b></span>
+  </div>
+</footer>
+
+<script>
+/* 預約後端網址：部署 apps-script/Code.gs 後，把網址貼在這裡。留空時，網站只算價格並複製訊息到 LINE。 */
+const BOOKING_API = "";
+/* 營業時間：可預約的第一個與最後一個開始時間（分鐘，超過 1440 代表隔天凌晨）。 */
+const OPEN_FROM = 10 * 60, OPEN_UNTIL = 25 * 60;
+
+(function(){
+  const BASE = 2300, BASE_MIN = 100, EXT = 600, EVENT_EXTRA = 20;
+  const CITIES = {
+    "台東": {venues:[["東浪工作室","北平街 104 巷"],["外出服務","從東浪出發"]], from:"東浪"},
+    "高雄": {venues:[["光武","光武家園旁"],["正興","正興國中旁"],["巨蛋","文忠路 106 號"],["外出服務","從光武出發"]], from:"光武"},
+    "台南": {venues:[["行程場地","依行事曆"]], trip:true},
+    "台中": {venues:[["行程場地","依行事曆"]], trip:true},
+    "台北": {venues:[["行程場地","依行事曆"]], trip:true}
+  };
+  const DURS = [[100,"招牌課程"],[130,"延長 30 分"],[160,"延長 60 分"]];
+  const $ = id => document.getElementById(id);
+  const fmt = n => "$" + n.toLocaleString("en-US");
+  const pad = n => String(n).padStart(2,"0");
+  const WD = ["日","一","二","三","四","五","六"];
+  let busy = null, busyMeta = {bufferMin:30, leadHours:3}, busyFrom = null;
+
+  function chips(el, name, items, checkedIdx){
+    el.innerHTML = items.map((it,i)=>{
+      const id = name + "-" + i;
+      return `<label for="${id}"><input type="radio" name="${name}" id="${id}" value="${it[0]}"${i===checkedIdx?" checked":""}${it[3]?" disabled":""}><span>${it[2]||it[0]}${it[1]?`<em>${it[1]}</em>`:""}</span></label>`;
+    }).join("");
+  }
+  const val = n => (document.querySelector(`input[name="${n}"]:checked`)||{}).value;
+
+  chips($("city"), "city", Object.keys(CITIES).map(c=>[c, CITIES[c].trip?"不定期":""]), 0);
+  function renderVenues(){ chips($("venue"), "venue", CITIES[val("city")].venues, 0); }
+  chips($("dur"), "dur", DURS.map(d=>[String(d[0]), d[1], d[0]+" 分鐘"]), 0);
+  renderVenues();
+
+  // 台灣時間的今天、明天
+  function twToday(){ const d=new Date(Date.now()+8*36e5); return d.toISOString().slice(0,10); }
+  function addDays(ds,n){ const d=new Date(ds+"T00:00:00Z"); d.setUTCDate(d.getUTCDate()+n); return d.toISOString().slice(0,10); }
+  $("date").min = twToday(); $("date").max = addDays(twToday(), 60);
+  $("date").value = addDays(twToday(), 1);
+
+  // 開始時間 → {date, time}（實際日曆日期，處理跨午夜）
+  function slotToReal(dateStr, m){
+    return {date: m>=1440 ? addDays(dateStr,1) : dateStr, time: pad(Math.floor(m%1440/60))+":"+pad(m%60)};
+  }
+  function currentStart(){
+    if(busy && val("slot")) return slotToReal($("date").value, Number(val("slot")));
+    return {date:$("date").value, time:$("time").value};
+  }
+
+  function nightFee(t){
+    if(!t) return 0;
+    const h = Number(t.split(":")[0]);
+    if(h>=1 && h<6) return 400;
+    if(h>=23 || h===0) return 200;
+    return 0;
+  }
+  function outcallFee(km){ km=Math.max(0,Math.ceil(Number(km)||0)); return km<=5?200:200+(km-5)*50; }
+
+  async function loadBusy(){
+    if(!BOOKING_API) return;
+    const from = twToday();
+    try{
+      const r = await fetch(`${BOOKING_API}?action=busy&from=${from}&days=61`);
+      const j = await r.json();
+      if(!j.ok) throw 0;
+      busy = j.busy.map(x=>[Date.parse(x[0]), Date.parse(x[1])]);
+      busyMeta = {bufferMin:j.bufferMin||30, leadHours:j.leadHours||3};
+      busyFrom = from;
+      $("slotBox").hidden = false; $("timeBox").hidden = true; $("send").hidden = false;
+      renderSlots(); update();
+    }catch(e){ busy = null; }
+  }
+
+  function renderSlots(){
+    if(!busy) return;
+    const ds = $("date").value, mins = Number(val("dur"));
+    if(!ds){ $("slots").innerHTML=""; $("slotMsg").textContent="請先選日期。"; return; }
+    const keep = val("slot");
+    const buf = busyMeta.bufferMin*6e4, earliest = Date.now() + busyMeta.leadHours*36e5;
+    const items = [];
+    for(let m=OPEN_FROM; m<=OPEN_UNTIL; m+=30){
+      const r = slotToReal(ds, m);
+      const s = Date.parse(`${r.date}T${r.time}:00+08:00`), e = s + (mins+EVENT_EXTRA)*6e4;
+      const taken = s < earliest || busy.some(b => s < b[1]+buf && e+buf > b[0]);
+      items.push([String(m), m>=1440?"隔天":"", r.time, taken]);
+    }
+    const free = items.filter(i=>!i[3]);
+    const idx = Math.max(0, items.findIndex(i=>i[0]===keep && !i[3]));
+    chips($("slots"), "slot", items, free.length ? (items[idx]&&!items[idx][3] ? idx : items.indexOf(free[0])) : -1);
+    $("slotMsg").textContent = free.length ? "劃線的時段已經有人約了。" : "這天已經約滿了，請換一天，或傳 LINE 問浪子。";
+  }
+
+  function build(){
+    const city = val("city"), venue = val("venue"), mins = Number(val("dur"));
+    const c = CITIES[city], isOut = venue === "外出服務";
+    const st = currentStart();
+    const ext = (mins-BASE_MIN)/30*EXT, night = nightFee(st.time);
+    const km = Math.ceil(Number($("km").value)||0);
+    const out = isOut ? outcallFee(km) : 0;
+    return {city, venue, mins, c, isOut, st, ext, night, km, out, total: BASE+ext+night+out};
+  }
+
+  function update(){
+    const b = build();
+    $("kmBox").hidden = !b.isOut;
+    if(b.isOut) $("kmHint").textContent = `從${b.c.from}出發，5 公里內 +$200，超過每公里 +$50。實際距離由浪子確認，旅館房費客人自付。`;
+    const rows = [["招牌放鬆課程 "+BASE_MIN+" 分", fmt(BASE)]];
+    if(b.ext) rows.push(["延長 "+(b.mins-BASE_MIN)+" 分", "+"+fmt(b.ext)]);
+    if(b.night) rows.push(["夜間加班費", "+"+fmt(b.night)]);
+    if(b.isOut) rows.push(["外出 約 "+b.km+" 公里", "+"+fmt(b.out)]);
+    $("lines").innerHTML = rows.map(r=>`<div><span>${r[0]}</span><b>${r[1]}</b></div>`).join("");
+    $("total").textContent = fmt(b.total);
+
+    let dateStr = "（請選日期）";
+    if(b.st.date){ const d=new Date(b.st.date+"T00:00"); if(!isNaN(d)) dateStr = `${d.getMonth()+1}/${d.getDate()}（${WD[d.getDay()]}）`; }
+    const who = [$("name").value.trim()||"（貴姓）", $("phone").value.trim()||"（手機）"].join(" ");
+    const place = b.city + " " + b.venue + (b.isOut ? `（約 ${b.km} 公里，地址再私訊）` : "");
+    const lines = [
+      "【東浪工作室 預約】",
+      "貴姓＋手機：" + who,
+      "日期時間：" + dateStr + " " + (b.st.time||"（時間）"),
+      "方案：招牌放鬆課程 " + b.mins + " 分鐘",
+      "地點：" + place,
+      "預估費用：" + fmt(b.total)
+    ];
+    const note = $("note").value.trim();
+    if(note) lines.push("備註：" + note);
+    $("msg").textContent = lines.join("\n");
+    $("copied").textContent = "";
+  }
+
+  const ERR = {
+    name:"請填寫貴姓。", phone:"手機號碼格式不對，請填 09 開頭的 10 碼。", time:"請選日期和時間。",
+    too_soon:"這個時間太近了，請選 "+busyMeta.leadHours+" 小時之後的時段，或直接傳 LINE。", too_far:"目前只開放 60 天內的預約。",
+    taken:"這個時段剛剛被約走了，請換一個時間。", rate:"送出太多次了，請稍後再試，或直接傳 LINE。", mins:"請選時長。"
+  };
+
+  $("send").addEventListener("click", async ()=>{
+    const b = build(), el = $("sent");
+    const name = $("name").value.trim(), phone = $("phone").value.replace(/\D/g,"");
+    el.className = "sent err";
+    if(!name){ el.textContent = ERR.name; $("name").focus(); return; }
+    if(!/^09\d{8}$/.test(phone)){ el.textContent = ERR.phone; $("phone").focus(); return; }
+    if(!b.st.date || !b.st.time){ el.textContent = ERR.time; return; }
+    $("send").disabled = true; el.className = "sent"; el.textContent = "送出中…";
+    try{
+      const r = await fetch(BOOKING_API, {method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"},
+        body: JSON.stringify({name, phone, date:b.st.date, time:b.st.time, mins:b.mins, city:b.city, venue:b.venue, km:b.km, note:$("note").value.trim()})});
+      const j = await r.json();
+      if(j.ok){
+        el.className = "sent ok";
+        el.textContent = `已收到你的預約（${fmt(j.total)}）。浪子會盡快在 LINE 或電話跟你確認，確認後才算預約成功。想更快的話，也可以加 LINE @eastwave 把下面的訊息傳給他。`;
+        await loadBusy();
+      }else{
+        el.className = "sent err"; el.textContent = ERR[j.error] || "送出失敗，請改用下面的按鈕複製訊息傳 LINE。";
+        if(j.error==="taken") await loadBusy();
+      }
+    }catch(e){
+      el.className = "sent err"; el.textContent = "網路有問題，請改用下面的按鈕複製訊息傳 LINE。";
+    }finally{ $("send").disabled = false; }
+  });
+
+  $("city").addEventListener("change", ()=>{ renderVenues(); update(); });
+  $("f").addEventListener("change", e=>{ if(e.target.name!=="slot") renderSlots(); update(); });
+  $("f").addEventListener("input", update);
+  $("f").addEventListener("submit", e=>e.preventDefault());
+
+  $("copy").addEventListener("click", ()=>{
+    const text = $("msg").textContent;
+    const done = ()=>{ $("copied").textContent = "已複製。開啟 LINE，貼到 @eastwave 的對話框傳送。"; };
+    const fallback = ()=>{
+      const r = document.createRange(); r.selectNodeContents($("msg"));
+      const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+      $("copied").textContent = "已選取訊息，請長按或按 Ctrl+C 複製。";
+    };
+    try{ navigator.clipboard.writeText(text).then(done, fallback); }catch(e){ fallback(); }
+  });
+
+  update();
+  loadBusy();
+})();
+</script>
+</body>
+</html>
