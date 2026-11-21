@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>東浪工作室</title>
-<meta name="description" content="東浪工作室 East Wave Studio｜台東浪子的男士運動按摩、指壓、油壓。台東・高雄工作室，不定期外出台南、台中、台北。LINE @eastwave 預約。">
+<meta name="description" content="東浪工作室 East Wave Studio｜台東浪子的男士運動按摩、指壓、油壓。台東・高雄工作室，不定期外出台南、台中、台北。LINE @812svkso 預約。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap">
@@ -366,12 +366,12 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center;justif
             <button class="btn btn-line" type="button" id="send" hidden>送出預約</button>
             <span class="sent" id="sent" role="status"></span>
             <button class="btn btn-line" type="button" id="copy">複製預約訊息，到 LINE 貼上</button>
-            <a class="btn btn-ghost" id="openLine" href="https://lin.ee/oroRBB8" target="_blank" rel="noopener">加入 LINE 好友 @eastwave</a>
+            <a class="btn btn-ghost" id="openLine" href="https://lin.ee/oroRBB8" target="_blank" rel="noopener">加入 LINE 好友 @812svkso</a>
             <span class="copied" id="copied"></span>
           </div>
           <div class="qr">
             <img src="img/line-qr.png" alt="東浪工作室 LINE 官方帳號 QR Code">
-            <p>加入官方帳號好友，24 小時隨時都能預約。掃 QR Code 或搜尋 ID<br><b>@eastwave</b></p>
+            <p>加入官方帳號好友，24 小時隨時都能預約。掃 QR Code 或搜尋 ID<br><b>@812svkso</b></p>
           </div>
         </aside>
       </div>
@@ -382,7 +382,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center;justif
 <footer>
   <div class="wrap">
     <span>© 東浪工作室 East Wave Studio・台東</span>
-    <a href="https://lin.ee/oroRBB8" target="_blank" rel="noopener">LINE 官方帳號 <b>@eastwave</b>，加好友 24 小時預約</a>
+    <a href="https://lin.ee/oroRBB8" target="_blank" rel="noopener">LINE 官方帳號 <b>@812svkso</b>，加好友 24 小時預約</a>
   </div>
 </footer>
 
@@ -538,7 +538,7 @@ const OPEN_FROM = 10 * 60, OPEN_UNTIL = 25 * 60;
       const j = await r.json();
       if(j.ok){
         el.className = "sent ok";
-        el.textContent = `已收到你的預約（${fmt(j.total)}）。浪子會盡快在 LINE 或電話跟你確認，確認後才算預約成功。想更快的話，也可以加 LINE @eastwave 把下面的訊息傳給他。`;
+        el.textContent = `已收到你的預約（${fmt(j.total)}）。浪子會盡快在 LINE 或電話跟你確認，確認後才算預約成功。想更快的話，也可以加 LINE @812svkso 把下面的訊息傳給他。`;
         await loadBusy();
       }else{
         el.className = "sent err"; el.textContent = ERR[j.error] || "送出失敗，請改用下面的按鈕複製訊息傳 LINE。";
@@ -556,7 +556,7 @@ const OPEN_FROM = 10 * 60, OPEN_UNTIL = 25 * 60;
 
   $("copy").addEventListener("click", ()=>{
     const text = $("msg").textContent;
-    const done = ()=>{ $("copied").textContent = "已複製。開啟 LINE，貼到 @eastwave 的對話框傳送。"; };
+    const done = ()=>{ $("copied").textContent = "已複製。開啟 LINE，貼到 @812svkso 的對話框傳送。"; };
     const fallback = ()=>{
       const r = document.createRange(); r.selectNodeContents($("msg"));
       const s = getSelection(); s.removeAllRanges(); s.addRange(r);
